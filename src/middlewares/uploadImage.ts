@@ -4,6 +4,7 @@ import { UserRepository } from "../modules/users/repositories/implementations/Us
 import multer, { StorageEngine } from 'multer';
 import path from 'path';
 import crypto from 'crypto';
+import { deleteFile } from "./deleteBeforeUpload";
 
 interface IUploadConfig {
 
@@ -21,10 +22,13 @@ export default {
       storage: multer.diskStorage({
 
          async destination(request, file, callback) {
+            await deleteFile(request)
+
             let userName: string | undefined = "WithoutUser"
             const user_id = request.body.user_id
             const userRepository = new UserRepository()
             const user = await userRepository.findById(user_id)
+
             userName = user?.username
             if (userName === undefined) {
                userName = "WithoutUser"

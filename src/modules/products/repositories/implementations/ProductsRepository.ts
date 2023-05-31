@@ -22,12 +22,7 @@ class ProductsRepository implements IProductsRepository {
     name, description, price, user_id, enabled, image_url
   }: ICreateProductDTO): Promise<void> {
     const product = this.repository.create({
-      name,
-      description,
-      price,
-      user_id,
-      enabled,
-      image_url
+      name, description, price, usersId: user_id, enabled, image_url
     })
 
     await this.repository.save(product)
@@ -40,7 +35,7 @@ class ProductsRepository implements IProductsRepository {
   }
 
   async list(user_id: string): Promise<Product[]> {
-    const products = await this.repository.find({ user_id: user_id })
+    const products = await this.repository.find({ usersId: user_id })
     return products;
   }
 

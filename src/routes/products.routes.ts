@@ -12,7 +12,7 @@ import { UpdateProductController } from '../modules/products/controller/updatePr
 
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 import uploadImage from '../middlewares/uploadImage';
-import { deleteFile } from "../middlewares/deleteProductAndUserFile"
+import { deleteFile } from "../middlewares/deleteImage"
 import multer from 'multer';
 
 const productsRoutes = Router();

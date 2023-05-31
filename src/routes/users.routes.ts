@@ -17,6 +17,7 @@ import { UpdateUserBusinessController } from '../modules/users/controller/update
 import { checkUserLevel } from '../middlewares/checkUserLevel';
 import multer from 'multer';
 import uploadImage from '../middlewares/uploadImage';
+import { deleteFile } from "../middlewares/deleteBeforeUpload"
 
 const usersRoutes = Router();
 

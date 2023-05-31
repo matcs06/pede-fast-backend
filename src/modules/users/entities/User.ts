@@ -40,7 +40,7 @@ class User {
   @CreateDateColumn()
   created_at: Date;
 
-  @OneToMany(() => Product, product => product.users)
+  @OneToMany(() => Product, (product) => product.users)
   products: Product[]
 
   constructor() {

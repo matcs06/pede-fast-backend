@@ -18,7 +18,10 @@ class Product {
   price: string;
 
   @Column()
-  user_id: string;
+  quantity: string;
+
+  @Column()
+  usersId: string;
 
   @Column()
   image_url: string;
@@ -29,7 +32,7 @@ class Product {
   @Column("text", { array: true, default: "{}" })
   options: string[]
 
-  @ManyToOne(() => User, user => user.products)
+  @ManyToOne(() => User, (user) => user.products)
   users: User;
 
   @CreateDateColumn()

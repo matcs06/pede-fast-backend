@@ -14,7 +14,7 @@ export class CreateProducts1683247628459 implements MigrationInterface {
                             isPrimary: true
                         },
                         {
-                            name: "user_id",
+                            name: "usersId",
                             type: "uuid",
                         },
                         {
@@ -68,7 +68,7 @@ export class CreateProducts1683247628459 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "products",
             new TableForeignKey({
-                columnNames: ["user_id"],
+                columnNames: ["usersId"],
                 referencedColumnNames: ["id"],
                 referencedTableName: "users",
                 onDelete: "NO ACTION",
@@ -78,7 +78,7 @@ export class CreateProducts1683247628459 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey("products", "products_users_user_id_foreign");
+        await queryRunner.dropForeignKey("products", "products_users_usersId_foreign");
         await queryRunner.dropTable("products");
     }
 

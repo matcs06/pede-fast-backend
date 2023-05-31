@@ -28,3 +28,10 @@
    <li>Delete</li>
    <li>Login</li>
 </ul>
+
+interface for delete and create for image
+{
+   user_id,
+   image_from: "product" | "user",
+   user_name: 
+}

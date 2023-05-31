@@ -1,0 +1,97 @@
+{
+   "openapi":"3.0.0",
+   "info":{
+      "title": "Antonielem agendamento documentation",
+      "description": "This is an scheduling api",
+      "version": "1.0.0",
+      "contact":{
+         "email": "matcs06@gmail.com"
+      }
+   },
+
+   "paths":{
+      "/products":{
+        
+         "post":{
+            "tags":["Products"],
+            "summary": "Create a service/product",
+            "description": "Creating a new service for customer",
+            "requestBody":{
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "type": "object",
+                        "properties":{
+                           "name":{
+                              "type": "string"
+                           },
+                           "description":{
+                              "type": "string"
+                           },
+                           "price":{
+                              "type": "string"
+                           },
+                           "duration":{
+                              "type": "string"
+                           }
+                        },
+                        "example":{
+                           "name": "Name sample",
+		                     "description": "description sample",
+		                     "price": "12",
+		                     "duration": "1:30"
+                        }
+                     }
+                  }
+               }
+            },
+            "responses":{
+               "201":{
+                  "description":"Created"
+               },
+               "500":{
+                  "description":"Service/Product already exists"
+               }
+            }
+         },
+         "get":{
+            "tags":["Products"],
+            "summary": "List all services",
+            "description": "List all services",
+            "responses":{
+               "200":{
+                  "description":"Services listed (Success)",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"array",
+                        
+                           "items":{
+                              "type":"object",
+                              "properties":{
+                                 "name":{
+                                 "type": "string"
+                                 },
+                                 "description":{
+                                    "type": "string"
+                                 },
+                                 "price":{
+                                    "type": "string"
+                                 },
+                                 "duration":{
+                                    "type": "string"
+                                 }
+                                 
+                              }
+                           }
+                           
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+      }
+   }
+}

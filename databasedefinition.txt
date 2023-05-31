@@ -1,0 +1,43 @@
+Serviços:
+Criação de serviço
+Listagem de todos os serviços
+Remover serviços
+Listage de unico serviço
+
+Usuário:
+Criação de um usuário
+Remoção de um usuário
+
+Agendamento:
+Criar um novo agendamento
+Listar todos os agendamentos
+Listar um único agendamento
+Remover um agendamento
+
+Horários
+Criar horários
+Listar horários
+Listar um horário
+Remover horário
+
+User schema:
+id
+name
+username
+password
+created_at
+
+Horários schema:
+date
+morning_star_time:
+morning_end_time:
+after_start_time:
+after_end_time:
+
+Agendamentos Schema:
+CustomerName:
+number:
+Service:
+date:
+start_time:
+end_time:

@@ -29,7 +29,7 @@ export async function deleteFile(request: Request) {
          throw new AppError("User does not exists!")
       }
 
-      const dest = path.resolve(__dirname, '..', '..', 'images', "users", user_name)
+      const dest = path.resolve(__dirname, '..', '..', 'images', "users", user_name, "profile")
       console.log(dest)
 
       let image_url = userToDelete.business_image_url

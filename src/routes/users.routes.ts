@@ -4,8 +4,6 @@ import { CreateUserController } from '../modules/users/controller/createUser/Cre
 
 import { DeleteUserController } from '../modules/users/controller/deleteUser/DeleteUserController';
 
-import { ListUserController } from '../modules/users/controller/listUser/ListUserController';
-
 import { ListAllUsersController } from '../modules/users/controller/listAllUsers/ListAllUsersController';
 
 import { FindUserByNameController } from '../modules/users/controller/findUserByName/FindUserByNameController';
@@ -15,17 +13,18 @@ import { UpdateUserController } from '../modules/users/controller/updateUser/Upd
 import { UpdateUserBusinessController } from '../modules/users/controller/updateUser/UpdateUserBusinessController';
 
 import { ListUserProductController } from '../modules/users/controller/listUser/ListUserProductsController';
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
 import { checkUserLevel } from '../middlewares/checkUserLevel';
 import multer from 'multer';
 import uploadImage from '../middlewares/uploadImage';
 import { deleteFile } from "../middlewares/deleteBeforeUpload"
+import { createDefaultFolders } from '../middlewares/createDefaultFolders';
 
 const usersRoutes = Router();
 
 const createUserController = new CreateUserController()
 const deleteUserController = new DeleteUserController()
-const listUserController = new ListUserController()
 const listAllUserService = new ListAllUsersController()
 const listUserProducts = new ListUserProductController()
 const findUserByName = new FindUserByNameController()
@@ -33,19 +32,19 @@ const updateUser = new UpdateUserController();
 const updateUserBusiness = new UpdateUserBusinessController();
 
 const upload = multer(uploadImage.multer)
-usersRoutes.post('/', createUserController.handle);
+usersRoutes.post('/', createDefaultFolders, createUserController.handle);
 
 usersRoutes.get("/userproducts", listUserProducts.handle)
 usersRoutes.get("/:username", findUserByName.handle)
-usersRoutes.get("/:id", listUserController.handle)
 usersRoutes.get("/", listAllUserService.handle)
 
-
-
+//usuário precisa estar autenticado
 usersRoutes.patch("/updateBusiness",
+   ensureAuthenticated,
    upload.single("filename"),
    updateUserBusiness.handle)
 
+/* precisa estar logado como super para executar essas rotas */
 usersRoutes.use(checkUserLevel)
 usersRoutes.delete("/:id", deleteUserController.handle)
 usersRoutes.patch("/", updateUser.handle)

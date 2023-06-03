@@ -34,7 +34,7 @@ productsRoutes.post('/',
    upload.single("filename"),
    createProductController.handle);
 
-productsRoutes.delete("/:id",
+productsRoutes.delete("/",
    deleteFile,
    deleteProductController.handle)
 

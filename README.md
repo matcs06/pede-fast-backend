@@ -12,26 +12,17 @@
 
 <h3>Products</h3>
 <ul>
-   <li>Create</li>
-   <li>List</li>
-   <li>Update</li>
-   <li>Delete</li>
-   <li>Login</li>
-  
+   <li>Create x</li>
+   <li>List x</li>
+   <li>Update x</li>
+   <li>Delete x</li>  
 </ul>
 
 <h3>Orders</h3>
 <ul>
-   <li>Create</li>
-   <li>List</li>
-   <li>Update</li>
-   <li>Delete</li>
-   <li>Login</li>
+   <li>Create x</li>
+   <li>List x</li>
+   <li>Update x</li>
+   <li>Delete x</li>
 </ul>
 
-interface for delete and create for image
-{
-   user_id,
-   image_from: "product" | "user",
-   user_name: 
-}

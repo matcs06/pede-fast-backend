@@ -33,18 +33,36 @@ export default {
             if (userName === undefined) {
                userName = "WithoutUser"
             }
-            let dest = path.resolve(__dirname, '..', "..", 'images', "users", userName)
 
-            /* Verifica se o diretório com o nome do usuário não existe, caso nao, cria */
-            if (!existsSync(dest)) {
+            let image_from = String(request.body.image_from)
+            let dest = ""
+            if (image_from == "user") {
+               dest = path.resolve(__dirname, '..', "..", 'images', "users", userName, "profile")
+               /* Verifica se o diretório com o nome do usuário não existe, caso nao, cria */
+               if (!existsSync(dest)) {
 
-               mkdir(dest, function (err: any) {
-                  if (err) {
-                     console.log(err)
-                  } else {
-                     console.log("New directory successfully created.")
-                  }
-               })
+                  await mkdir(dest, { recursive: true }, function (err: any) {
+                     if (err) {
+                        console.log(err)
+                     } else {
+                        console.log("New directory successfully created.")
+                     }
+                  })
+               }
+            } else {
+               dest = path.resolve(__dirname, '..', "..", 'images', "users", userName)
+
+               /* Verifica se o diretório com o nome do usuário não existe, caso nao, cria */
+               if (!existsSync(dest)) {
+
+                  await mkdir(dest, { recursive: true }, function (err: any) {
+                     if (err) {
+                        console.log(err)
+                     } else {
+                        console.log("New directory successfully created.")
+                     }
+                  })
+               }
             }
 
             return callback(null, dest)

@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import { Request, Response } from 'express';
 import { container } from "tsyringe"
 
@@ -6,15 +7,11 @@ import { DeleteProductService } from '../../services/DeleteProductService';
 class DeleteProductController {
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const {
-      id
-    } = request.params;
-
-    const { user_name } = request.query
+    const product_id = request.query.id;
 
     const deleteProductService = container.resolve(DeleteProductService)
 
-    await deleteProductService.execute(id);
+    await deleteProductService.execute(String(product_id));
 
     return response
       .status(200)

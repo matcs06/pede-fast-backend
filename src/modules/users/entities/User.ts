@@ -37,11 +37,14 @@ class User {
   @Column()
   business_image_url: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @Column()
+  store_status: string;
 
   @OneToMany(() => Product, (product) => product.users, { eager: true })
   products: Product[]
+
+  @CreateDateColumn()
+  created_at: Date;
 
   constructor() {
     if (!this.id) {

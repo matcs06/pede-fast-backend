@@ -9,7 +9,7 @@ class CreateProductController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     const {
-      name, description, price, user_id
+      name, description, price, user_id, options, quantity
     } = request.body;
 
     let filename = request.file?.filename
@@ -17,13 +17,17 @@ class CreateProductController {
       filename = ""
     }
 
+    const optionsArray = options.split(",")
+
     const createProductService = container.resolve(CreateProductService)
 
     await createProductService.execute({
-      name, price, description, user_id, image_url: filename
+      name, price, description, user_id, options: optionsArray, quantity, image_url: filename
     });
 
     return response.status(201).send();
+
+
   }
 }
 

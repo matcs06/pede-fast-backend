@@ -1,6 +1,7 @@
 import { getRepository, Repository } from "typeorm";
 import { User } from "../../entities/User";
 import { ICreateUserDTO, IUserRepository } from "../IUserRepository";
+import { Product } from "../../../products/entities/Product";
 
 class UserRepository implements IUserRepository {
    private respository: Repository<User>
@@ -47,6 +48,11 @@ class UserRepository implements IUserRepository {
 
       return users;
 
+   }
+
+   public async findUserProducts(username: string): Promise<Product[] | undefined> {
+      const user = await this.respository.findOne({ username })
+      return user?.products
    }
 
    public async save(data: User): Promise<void> {

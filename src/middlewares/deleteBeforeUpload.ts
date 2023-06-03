@@ -57,7 +57,7 @@ export async function deleteFile(request: Request) {
 
    if (image_from == "product") {
       let user_name = String(request.body.username)
-      const id = request.body.user_id
+      const id = request.body.product_id
 
       if (!user_name) {
          user_name = "nouser"

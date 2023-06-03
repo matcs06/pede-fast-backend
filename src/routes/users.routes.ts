@@ -14,6 +14,8 @@ import { UpdateUserController } from '../modules/users/controller/updateUser/Upd
 
 import { UpdateUserBusinessController } from '../modules/users/controller/updateUser/UpdateUserBusinessController';
 
+import { ListUserProductController } from '../modules/users/controller/listUser/ListUserProductsController';
+
 import { checkUserLevel } from '../middlewares/checkUserLevel';
 import multer from 'multer';
 import uploadImage from '../middlewares/uploadImage';
@@ -25,16 +27,20 @@ const createUserController = new CreateUserController()
 const deleteUserController = new DeleteUserController()
 const listUserController = new ListUserController()
 const listAllUserService = new ListAllUsersController()
+const listUserProducts = new ListUserProductController()
 const findUserByName = new FindUserByNameController()
 const updateUser = new UpdateUserController();
 const updateUserBusiness = new UpdateUserBusinessController();
-const upload = multer(uploadImage.multer)
 
+const upload = multer(uploadImage.multer)
 usersRoutes.post('/', createUserController.handle);
 
+usersRoutes.get("/userproducts", listUserProducts.handle)
 usersRoutes.get("/:username", findUserByName.handle)
 usersRoutes.get("/:id", listUserController.handle)
 usersRoutes.get("/", listAllUserService.handle)
+
+
 
 usersRoutes.patch("/updateBusiness",
    upload.single("filename"),
@@ -43,5 +49,6 @@ usersRoutes.patch("/updateBusiness",
 usersRoutes.use(checkUserLevel)
 usersRoutes.delete("/:id", deleteUserController.handle)
 usersRoutes.patch("/", updateUser.handle)
+
 
 export { usersRoutes };

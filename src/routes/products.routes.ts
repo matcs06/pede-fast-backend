@@ -38,6 +38,6 @@ productsRoutes.delete("/:id",
    deleteFile,
    deleteProductController.handle)
 
-productsRoutes.patch("/:id", updateProductController.handle)
+productsRoutes.patch("/update", upload.single("filename"), updateProductController.handle)
 
 export { productsRoutes };

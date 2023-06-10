@@ -9,6 +9,9 @@ import { IUserRepository } from "../../modules/users/repositories/IUserRepositor
 import { DeliveryRepository } from "../../modules/users/repositories/implementations/DeliveryRepository"
 import { IDeliveryRepository } from "../../modules/users/repositories/IDeliveryRepository"
 
+import { OrderRepository } from "../../modules/products/repositories/implementations/OrderRepository"
+import { IOrderRepository } from "../../modules/products/repositories/IOrderRepository"
+
 container.registerSingleton<IProductsRepository>(
    "ProductsRepository", ProductsRepository
 )
@@ -20,4 +23,8 @@ container.registerSingleton<IUserRepository>(
 
 container.registerSingleton<IDeliveryRepository>(
    "DeliveryRepository", DeliveryRepository
+)
+
+container.registerSingleton<IOrderRepository>(
+   "OrderRepository", OrderRepository
 )

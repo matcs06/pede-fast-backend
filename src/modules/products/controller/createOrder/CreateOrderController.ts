@@ -9,7 +9,7 @@ class CreateOrderController {
 
    async handle(request: Request, response: Response): Promise<Response> {
       const {
-         adm_user_id, customer_name, customer_phone, customer_address, producs_ids
+         adm_user_id, customer_name, customer_phone, customer_address, products_ids
       } = request.body;
 
       let filename = request.file?.filename
@@ -17,7 +17,7 @@ class CreateOrderController {
          filename = ""
       }
 
-      const productsIds = producs_ids.split(",") //productsIDS sao passdos no seguinte formato id|3, ex: asdasd-as12312-sdasd-sas323 | 3 
+      const productsIds = products_ids.split(",") //productsIDS sao passdos no seguinte formato id|3, ex: asdasd-as12312-sdasd-sas323 | 3 
 
       const createOrder = container.resolve(CreateOrderService)
 
@@ -35,3 +35,5 @@ class CreateOrderController {
 }
 
 export { CreateOrderController };
+
+//Missing test

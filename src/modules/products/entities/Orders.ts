@@ -20,7 +20,7 @@ class Orders {
    adm_user_id: string;
 
    @Column('text', { array: true, nullable: true })
-   producs_ids: string[] // será passado id ao lado da quantidade, ex: 123asd-2312asd-a2233-asdas | 2
+   products_ids: string[] // será passado id ao lado da quantidade, ex: 123asd-2312asd-a2233-asdas | 2
 
    @Column()
    product: string;

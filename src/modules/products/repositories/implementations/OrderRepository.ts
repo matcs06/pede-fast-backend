@@ -24,14 +24,18 @@ class OrderRepository implements IOrderRepository {
 
    }
 
-   async findByUserId(adm_user_id: string): Promise<Orders | undefined> {
-      const user = await this.respository.findOne({ adm_user_id })
 
-      return user;
+   async findByUserId(adm_user_id: string): Promise<Orders[] | undefined> {
+      const orders = await this.respository.find({ adm_user_id })
+
+      return orders;
    }
 
+   async findOneById(order_id: string): Promise<Orders | undefined> {
+      const order = await this.respository.findOne(order_id)
 
-
+      return order;
+   }
 
    public async save(data: Orders): Promise<void> {
       await this.respository.save(data);

@@ -2,7 +2,7 @@
 import { Request, Response } from 'express';
 import { container } from "tsyringe"
 
-import { CreateOrderService } from '../../services/CreateOrderService';
+import { OrderService } from '../../services/OrderServices';
 
 
 class CreateOrderController {
@@ -12,14 +12,9 @@ class CreateOrderController {
          adm_user_id, customer_name, customer_phone, customer_address, products_ids
       } = request.body;
 
-      let filename = request.file?.filename
-      if (filename == undefined) {
-         filename = ""
-      }
-
       const productsIds = products_ids.split(",") //productsIDS sao passdos no seguinte formato id|3, ex: asdasd-as12312-sdasd-sas323 | 3 
 
-      const createOrder = container.resolve(CreateOrderService)
+      const createOrder = container.resolve(OrderService)
 
 
       const status = "opened"
@@ -35,5 +30,3 @@ class CreateOrderController {
 }
 
 export { CreateOrderController };
-
-//Missing test

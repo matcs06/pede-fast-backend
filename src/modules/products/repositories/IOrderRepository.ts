@@ -15,8 +15,10 @@ interface IOrderRepository {
       adm_user_id, customer_address, customer_name, customer_phone, status, products_ids
    }: ICreateOrderDTO): Promise<void>;
 
-   findByUserId(adm_user_id: string): Promise<Orders | undefined>;
+   findByUserId(adm_user_id: string): Promise<Orders[] | undefined>;
    save(data: Orders): Promise<void>;
+
+   findOneById(order_id: string): Promise<Orders | undefined>
 
    deleteById(id: string): Promise<void>;
 }

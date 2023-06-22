@@ -7,6 +7,7 @@ interface IRequest {
    business_name: string;
    address: string;
    phone: string;
+   update_image: string;
    image_url: string;
 }
 
@@ -19,7 +20,7 @@ class UpdateUserBusinessService {
    }
 
    async execute({
-      username, phone, business_name, address, image_url
+      username, phone, business_name, address, update_image, image_url
    }: IRequest): Promise<void> {
       try {
          const foundUser = await this.UserRepository.findByName(username)
@@ -31,7 +32,10 @@ class UpdateUserBusinessService {
          foundUser.phone = phone;
          foundUser.address = address;
          foundUser.business_name = business_name;
-         foundUser.business_image_url = image_url;
+
+         if (update_image === "yes") {
+            foundUser.business_image_url = image_url
+         }
 
          await this.UserRepository.save(foundUser)
 

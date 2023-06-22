@@ -7,7 +7,7 @@ class UpdateUserBusinessController {
 
    async handle(request: Request, response: Response): Promise<Response> {
       const {
-         user_id, username, phone, business_name, address
+         user_id, username, phone, business_name, address, update_image
       } = request.body;
 
       let filename = request.file?.filename
@@ -18,7 +18,7 @@ class UpdateUserBusinessController {
       const updateUserBusinessService = container.resolve(UpdateUserBusinessService)
 
       await updateUserBusinessService.execute({
-         username, phone, business_name, address, image_url: filename
+         username, phone, business_name, address, update_image, image_url: filename
       });
 
       return response.status(201).send();

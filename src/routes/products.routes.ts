@@ -10,6 +10,8 @@ import { ListSingleProductController } from '../modules/products/controller/list
 
 import { UpdateProductController } from '../modules/products/controller/updateProduct/UpdateProductController';
 
+import { UpdateProductStockController } from '../modules/products/controller/updateProductStock/UpdateProductStockController';
+
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 import uploadImage from '../middlewares/uploadImage';
 import { deleteFile } from "../middlewares/deleteImage"
@@ -22,6 +24,8 @@ const listProductController = new ListProductController
 const deleteProductController = new DeleteProductController()
 const listSingleProductController = new ListSingleProductController()
 const updateProductController = new UpdateProductController()
+const updateProductStockController = new UpdateProductStockController()
+
 const upload = multer(uploadImage.multer)
 
 productsRoutes.get('/', listProductController.handle);
@@ -39,5 +43,7 @@ productsRoutes.delete("/",
    deleteProductController.handle)
 
 productsRoutes.patch("/update", upload.single("filename"), updateProductController.handle)
+
+productsRoutes.patch("/stockupdate", updateProductStockController.handle)
 
 export { productsRoutes };

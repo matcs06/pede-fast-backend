@@ -7,7 +7,7 @@ class UpdateProductController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     const {
-      name, description, price, quantity, enabled, product_id
+      name, description, price, quantity, enabled, product_id, update_image
     } = request.body;
 
     let filename = request.file?.filename
@@ -18,7 +18,7 @@ class UpdateProductController {
     const updateProductService = container.resolve(UpdateProductService)
 
     await updateProductService.execute({
-      id: product_id, name, price, description, quantity, enabled, filename
+      id: product_id, name, price, description, quantity, enabled, update_image, filename
     });
 
     return response.status(201).send();

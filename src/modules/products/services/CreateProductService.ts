@@ -8,7 +8,7 @@ interface IRequest {
   price: string;
   user_id: string;
   image_url: string;
-  options: [];
+  options: any;
   quantity: string;
 }
 

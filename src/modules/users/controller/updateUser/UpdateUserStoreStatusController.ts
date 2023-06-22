@@ -6,12 +6,8 @@ import { UpdateUserStoreStatusSevice } from '../../services/UpdateUserStoreStatu
 class UpdateUserStoreStatusController {
 
    async handle(request: Request, response: Response): Promise<Response> {
-      const {
-         user_id
-      } = request.params;
 
-      const { store_status } = request.body // "opened or closed"
-
+      const { user_id, store_status } = request.body // "opened or closed"
 
       const updateUserStoreStatus = container.resolve(UpdateUserStoreStatusSevice)
 

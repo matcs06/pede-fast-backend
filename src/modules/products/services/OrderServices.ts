@@ -40,12 +40,16 @@ class OrderService {
    async updateProductsStock(products_ids: string[]) {
       //lógica para atualizar stoque dos produtos
       products_ids.map(async (product_id) => {
-         const idOnly = product_id.split("|")[0].trim()
-         const quantityOnly = product_id.split("|")[1].trim()
+         const idOnly = product_id.split("|")[0].trim()   // separando o id do produto
+         const quantityOnly = product_id.split("|")[1].trim() //separando a quantidade do produto
 
          const product = await this.productsRepository.findById(idOnly)
 
          if (product) {
+
+            if (Number(product.quantity) < Number(quantityOnly)) {
+               throw new AppError("Quantity not available for your order, try again")
+            }
             const updatedQuantity = Number(product.quantity) - Number(quantityOnly)
 
             product.quantity = String(updatedQuantity)

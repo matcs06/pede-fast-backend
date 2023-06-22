@@ -48,7 +48,7 @@ usersRoutes.patch("/updateBusiness",
    upload.single("filename"),
    updateUserBusiness.handle)
 
-usersRoutes.patch("/updateStoreStatus/:id", ensureAuthenticated, updateUserStoreStatus.handle)
+usersRoutes.patch("/updateStoreStatus", ensureAuthenticated, updateUserStoreStatus.handle)
 
 /* precisa estar logado como super para executar essas rotas */
 usersRoutes.use(checkUserLevel)

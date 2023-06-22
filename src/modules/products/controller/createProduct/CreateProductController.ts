@@ -17,16 +17,16 @@ class CreateProductController {
       filename = ""
     }
 
-    const optionsArray = options.split(",")
+    const arrayoptions = eval(options)
+
 
     const createProductService = container.resolve(CreateProductService)
 
     await createProductService.execute({
-      name, price, description, user_id, options: optionsArray, quantity, image_url: filename
+      name, price, description, user_id, options: arrayoptions, quantity, image_url: filename
     });
 
     return response.status(201).send();
-
 
   }
 }

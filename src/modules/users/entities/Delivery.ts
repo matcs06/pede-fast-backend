@@ -10,6 +10,9 @@ class Delivery {
    tax: string;
 
    @Column()
+   deativate_delivery: boolean;
+
+   @Column()
    has_discount: boolean;
 
    @Column()

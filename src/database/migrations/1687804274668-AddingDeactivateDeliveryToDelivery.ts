@@ -5,10 +5,10 @@ export class AddingDeactivateDeliveryToDelivery1687804274668 implements Migratio
     public async up(queryRunner: QueryRunner): Promise<void> {
 
         await queryRunner.addColumns(
-            'orders',
+            'delivery',
             [
                 new TableColumn({
-                    name: 'deativate_delivery',
+                    name: 'deactivate_delivery',
                     type: 'boolean',
                     isNullable: true,
                 })

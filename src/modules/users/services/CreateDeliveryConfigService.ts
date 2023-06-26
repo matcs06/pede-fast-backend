@@ -32,7 +32,7 @@ class CreateDeliveryConfigService {
          foundDeliveryConfig.discount_percentage = discount_percentage;
          foundDeliveryConfig.has_discount = has_discount;
          foundDeliveryConfig.parameter = parameter
-         foundDeliveryConfig.deativate_delivery = deactivate_delivery
+         foundDeliveryConfig.deactivate_delivery = deactivate_delivery
 
          this.DeliveryRepository.save(foundDeliveryConfig)
       } else {

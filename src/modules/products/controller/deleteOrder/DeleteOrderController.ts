@@ -17,7 +17,7 @@ class DeleteOrderController {
 
       return response
          .status(200)
-         .json({ message: 'Product successfully deleted!!' });
+         .json({ message: 'Order successfully deleted!!' });
 
 
    }

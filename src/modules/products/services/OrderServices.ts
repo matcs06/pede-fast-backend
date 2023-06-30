@@ -28,21 +28,18 @@ class OrderService {
       adm_user_id, customer_address, customer_name, customer_phone, status, products_ids
    }: IRequest): Promise<void> {
 
+      await this.updateProductsStock(products_ids)
 
 
-      this.updateProductsStock(products_ids)
-
-
-      this.OrderRepository.create({ adm_user_id, customer_address, customer_name, customer_phone, products_ids, status })
+      await this.OrderRepository.create({ adm_user_id, customer_address, customer_name, customer_phone, products_ids, status })
    }
 
 
-   async updateProductsStock(products_ids: string[]) {
+   async updateProductsStock(products_ids: string[]): Promise<void> {
       //lógica para atualizar stoque dos produtos
       products_ids.map(async (product_id) => {
          const idOnly = product_id.split("|")[0].trim()   // separando o id do produto
          const quantityOnly = product_id.split("|")[1].trim() //separando a quantidade do produto
-
          const product = await this.productsRepository.findById(idOnly)
 
          if (product) {
@@ -54,7 +51,7 @@ class OrderService {
 
             product.quantity = String(updatedQuantity)
 
-            this.productsRepository.save(product)
+            await this.productsRepository.save(product)
          }
       })
 

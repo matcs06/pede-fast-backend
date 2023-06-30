@@ -14,10 +14,9 @@ const listOrder = new ListOrderController()
 const deleteOrder = new DeleteOrderController()
 const updateOrder = new UpdateOrderController()
 
-orderRoutes.use(ensureAuthenticated)
 orderRoutes.post("/", createOrder.handle)
-orderRoutes.get("/", listOrder.handle)
-orderRoutes.delete("/", deleteOrder.handle)
-orderRoutes.patch("/", updateOrder.handle)
+orderRoutes.get("/", ensureAuthenticated, listOrder.handle)
+orderRoutes.delete("/", ensureAuthenticated, deleteOrder.handle)
+orderRoutes.patch("/", ensureAuthenticated, updateOrder.handle)
 
 export { orderRoutes };

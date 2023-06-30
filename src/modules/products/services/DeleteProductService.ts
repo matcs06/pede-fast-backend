@@ -21,7 +21,7 @@ class DeleteProductService {
       const findProduct = await this.productsRepository.findById(id)
 
       if (!findProduct) {
-         throw new AppError("Produc not found")
+         throw new AppError("Product not found")
       }
 
       await this.productsRepository.deleteById(id);

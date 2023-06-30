@@ -11,9 +11,7 @@ class CreateOrderController {
       const {
          adm_user_id, customer_name, customer_phone, customer_address, products_ids
       } = request.body;
-
       const productsIds = products_ids.split(",") //productsIDS sao passdos no seguinte formato id|3, ex: asdasd-as12312-sdasd-sas323 | 3 
-
       const createOrder = container.resolve(OrderService)
 
 

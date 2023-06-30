@@ -41,7 +41,7 @@ class UpdateProductService {
       productAlreadyExists.name = name;
       productAlreadyExists.price = price;
       productAlreadyExists.description = description;
-      productAlreadyExists.enabled = enabled == "true" ? true : false;
+      productAlreadyExists.enabled = enabled == "enabled" ? true : false;
       productAlreadyExists.quantity = quantity;
       if (update_image === "yes") {
         productAlreadyExists.image_url = filename

@@ -1,5 +1,4 @@
 node_modules
 ormconfig.json
-*.png
-*.jpeg
+dist/
 .env

@@ -27,4 +27,4 @@ jobs:
     - run: yarn build
     - run: cp /home/mat/ormconfigfile/ormconfig.json /home/mat/app/actions-runner/_work/pede-fast-backend/pede-fast-backend/
     - run: yarn typeorm migration:run
-    - run: pm2 restart pedefast-cicd-server
+    - run: pm2 restart pedefast-deploy

@@ -1,5 +1,4 @@
 <h2> Documentacao api </h2>
-
 <h3>User</h3>
 <ul>
    <li>Create x</li>

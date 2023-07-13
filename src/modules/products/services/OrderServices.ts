@@ -28,7 +28,7 @@ class OrderService {
       adm_user_id, customer_address, customer_name, customer_phone, status, products_ids
    }: IRequest): Promise<void> {
 
-      await this.updateProductsStock(products_ids)
+      //await this.updateProductsStock(products_ids)
 
 
       await this.OrderRepository.create({ adm_user_id, customer_address, customer_name, customer_phone, products_ids, status })

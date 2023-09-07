@@ -25,13 +25,13 @@ class OrderService {
 
    //products_ids deve ser passado no seguinte formato id | quantidade do produto, ex: 123asdas-12312asdas-12312asdas | 3
    async execute({
-      adm_user_id, customer_address, customer_name, customer_phone, status, products_ids
+      adm_user_id, customer_address, customer_name, customer_phone, status, products_ids, product
    }: IRequest): Promise<void> {
 
       await this.updateProductsStock(products_ids)
 
 
-      //await this.OrderRepository.create({ adm_user_id, customer_address, customer_name, customer_phone, products_ids, status })
+      await this.OrderRepository.create({ adm_user_id, customer_address, customer_name, customer_phone, products_ids, status, product })
    }
 
 

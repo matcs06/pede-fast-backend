@@ -15,9 +15,9 @@ class OrderRepository implements IOrderRepository {
 
    }
 
-   async create({ adm_user_id, customer_address, customer_name, customer_phone, status }: ICreateOrderDTO): Promise<void> {
+   async create({ adm_user_id, customer_address, customer_name, customer_phone, status, product }: ICreateOrderDTO): Promise<void> {
       const order = this.respository.create({
-         adm_user_id, customer_address, customer_name, customer_phone, status,
+         adm_user_id, customer_address, customer_name, customer_phone, status, product
       })
 
       await this.respository.save(order)

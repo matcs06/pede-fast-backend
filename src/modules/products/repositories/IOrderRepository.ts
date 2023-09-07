@@ -8,11 +8,12 @@ interface ICreateOrderDTO {
    adm_user_id: string;
    products_ids: string[]
    status: "opened" | "closed";
+   product: string;
 }
 
 interface IOrderRepository {
    create({
-      adm_user_id, customer_address, customer_name, customer_phone, status, products_ids
+      adm_user_id, customer_address, customer_name, customer_phone, status, products_ids, product
    }: ICreateOrderDTO): Promise<void>;
 
    findByUserId(adm_user_id: string): Promise<Orders[] | undefined>;
